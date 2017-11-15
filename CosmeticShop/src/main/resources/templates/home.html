@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Cosmetics Shopping</title>
+	<meta charset = 'UTF-8'/>
+	<title>Cosmetics Shopping</title>
+	<link rel='stylesheet' type='text/css' href='/static/css/boostrap.min.css' th:href='@{/static/css/boostrap.min.css}'/>
 </head>
 <body>
 	<h1>Cosmetic Shop</h1>
 	<form>
-		<a href='#'>LogIn</a>
-		<a href='#'>SignUp</a>
+		<a href='@{/login.html}'>LogIn</a>
+		<a href='@{/signup.html}'>SignUp</a>
 	</form>
 	<h3>Skincare Products</h3>
 	<div class='container'>
