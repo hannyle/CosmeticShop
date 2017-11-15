@@ -7,9 +7,14 @@
 </head>
 <body>
 	<h1>LogIn</h1>
-	<form>
-	
-	
+	<form action='#' th:action='@{/login}' th:object='${loginForm}' method='POST'>
+		Username:
+		<input type='text' th:field="*{username}"/>
+		<br/>
+		Password:
+		<input type='text' th:field='*{password}'/>
+		<br/>
+		<input type='submit' value='Log In'/>
 	</form>
 
 </body>

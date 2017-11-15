@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset='UTF-8'/>
+	<title>LogIn</title>
+	<link rel='stylesheet' type='text/css' href='/static/css/boostrap.min.css' th:href='@{/static/css/boostrap.min.css}'/>
+</head>
+<body>
+	<h1>SignUp for an account</h1>
+	<form action='#' th:action='@{/signup}' th:object='${signupForm}' method='POST'>
+		First name:
+		<input type='text' th:field="*{firstName}"/>
+		<br/>
+		Last name:
+		<input type='text' th:field='*{lastName}'/>
+		<br/>
+		Username:
+		<input type='text' th:field='@{createUser}'/>
+		<br/>
+		Password:
+		<input type='text' th:field='@{createPassword}'/>
+		<br/>		
+		<input type='submit' value='Register'/>
+	</form>
+
+</body>
+</html>
