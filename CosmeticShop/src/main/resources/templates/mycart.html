@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace='layout :: head'>
+</head>
+<body>
+	<nav th:replace='layout :: header'></nav>
+	<h1>My Cart</h1>
+	<div>
+		<table class='table table-striped' border='1'>
+			<tr>
+				<th>Product name</th>
+				<th>Price</th>
+			</tr>
+			<tr th:each='product : ${products}'>
+				<td th:text='${product.name}'></td>
+				<td th:text='${product.price}'></td>
+				<td><a class='btn btn-danger' th:href="@{/delete/{id}(id=${product.id})}">Delete</a></td>  
+			</tr>
+		</table>
+		<p>Total price: </p>
+	</div>
+</body>
+</html>

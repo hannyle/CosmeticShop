@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace='layout :: head'>
 	<meta charset='UTF-8'/>
 	<title>LogIn</title>
 	<link rel='stylesheet' type='text/css' href='/static/css/boostrap.min.css' th:href='@{/static/css/boostrap.min.css}'/>
 </head>
 <body>
+	<nav th:replace='layout :: header'></nav>
 	<h1>LogIn</h1>
-	<form action='#' th:action='@{/login}' th:object='${loginForm}' method='POST'>
-		Username:
-		<input type='text' th:field="*{username}"/>
-		<br/>
-		Password:
-		<input type='text' th:field='*{password}'/>
-		<br/>
-		<input type='submit' value='Log In'/>
+	<form class='form-horizontal' action='#' th:action='@{/login}' th:object='${loginForm}' method='POST'>
+		<div class='form-group'>
+			<label class='control-label'>Username:</label>
+			<input class='form-control' type='text' th:field="*{username}"/>					
+		</div>
+		<div class='form-group'>
+			<label class='control-label'>Password:</label>
+			<input class='form-control' type='text' th:field="*{password}"/>
+		</div>		
+		<input class='btn btn-primary' type='submit' value='Log In'/>
 	</form>
 
 </body>
