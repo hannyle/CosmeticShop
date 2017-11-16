@@ -4,7 +4,7 @@
 </head>
 <body>
 	<nav th:replace='layout :: header'></nav>
-	<p class='pull-right'>My Cart</p>
+	<p class='pull-right'><span>My Cart</span>|<span sec:authorize="hasAuthority('ADMIN')">Order</span> | <span sec:authorize="hasAuthority('ADMIN')">Create product</span></p>
 	<div class='container'>
 		<div class='row'>
 			<div class='col-sm-4'>
