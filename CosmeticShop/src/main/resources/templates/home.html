@@ -4,7 +4,7 @@
 </head>
 <body>
 	<nav th:replace='layout :: header'></nav>
-	<p class='pull-right'><span>My Cart</span>|<span sec:authorize="hasAuthority('ADMIN')">Order</span> | <span sec:authorize="hasAuthority('ADMIN')">Create product</span></p>
+	<p class='pull-right'><span>My Cart</span>|<span>Order</span> | <span>Create product</span></p>
 	<div class='container'>
 		<div class='row' th:each="product : ${products}">
 			<div class='col-sm-4'>
@@ -14,6 +14,9 @@
 						<h3><a th:text='${product.name}'>Product</a></h3>
 						<p>[[${product.price}]]</p>
 					</div>
+					<a th:href="@{'mycart/addProduct/{id}'(id=${product.id})}">
+                		<button type="button" class="btn btn-primary" th:text="Buy">Buy</button>
+            		</a>
 				</div>
 			</div>
 			<div class='col-sm-4'>
