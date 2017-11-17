@@ -6,12 +6,13 @@
 	<nav th:replace='layout :: header'></nav>
 	<p class='pull-right'><span>My Cart</span>|<span sec:authorize="hasAuthority('ADMIN')">Order</span> | <span sec:authorize="hasAuthority('ADMIN')">Create product</span></p>
 	<div class='container'>
-		<div class='row'>
+		<div class='row' th:each="product : ${products}">
 			<div class='col-sm-4'>
 				<div class='thumbnail'>
 					<img class='product' src='#' alt='product1'/>
 					<div class='caption'>
-						<p></p>
+						<h3><a th:text='${product.name}'>Product</a></h3>
+						<p>[[${product.price}]]</p>
 					</div>
 				</div>
 			</div>
@@ -19,7 +20,8 @@
 				<div class='thumbnail'>
 					<img class='product' src='#' alt='product2'/>
 					<div class='caption'>
-						<p></p>
+						<h3><a th:text='${product.name}'>Product</a></h3>
+						<p>[[${product.price}]]</p>
 					</div>
 				</div>
 			</div>
@@ -27,7 +29,8 @@
 				<div class='thumbnail'>
 					<img class='product' src='#' alt='product3'/>
 					<div class='caption'>
-						<p></p>
+						<h3><a th:text='${product.name}'>Product</a></h3>
+						<p>[[${product.price}]]</p>
 					</div>
 				</div>
 			</div>
@@ -35,7 +38,8 @@
 				<div class='thumbnail'>
 					<img class='product' src='#' alt='product4'/>
 					<div class='caption'>
-						<p></p>
+						<h3><a th:text='${product.name}'>Product</a></h3>
+						<p>[[${product.price}]]</p>
 					</div>
 				</div>
 			</div>
@@ -43,7 +47,8 @@
 				<div class='thumbnail'>
 					<img class='product' src='#' alt='product5'/>
 					<div class='caption'>
-						<p></p>
+						<h3><a th:text='${product.name}'>Product</a></h3>
+						<p>[[${product.price}]]</p>
 					</div>
 				</div>
 			</div>
@@ -51,7 +56,8 @@
 				<div class='thumbnail'>
 					<img class='product' src='#' alt='product6'/>
 					<div class='caption'>
-						<p></p>
+						<h3><a th:text='${product.name}'>Product</a></h3>
+						<p>[[${product.price}]]</p>
 					</div>
 				</div>
 			</div>

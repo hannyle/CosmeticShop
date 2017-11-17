@@ -14,9 +14,9 @@ public class Product {
 	
 	public Long id;
 	public String name;
-	public int price;
-	
-	public Product(String name, int price) {
+	public String price;
+		
+	public Product(String name, String price) {
 		this.name = name;
 		this.price = price;
 	}
@@ -36,10 +36,10 @@ public class Product {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getPrice() {
+	public String getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 
