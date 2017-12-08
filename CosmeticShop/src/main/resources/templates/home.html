@@ -1,70 +1,34 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:replace='layout :: head'>
 </head>
 <body>
 	<nav th:replace='layout :: header'></nav>
-	<p class='pull-right'><span>My Cart</span>|<span>Order</span> | <span>Create product</span></p>
-	<div class='container'>
-		<div class='row' th:each="product : ${products}">
-			<div class='col-sm-4'>
-				<div class='thumbnail'>
-					<img class='product' src='#' alt='product1'/>
-					<div class='caption'>
-						<h3><a th:text='${product.name}'>Product</a></h3>
-						<p>[[${product.price}]]</p>
-					</div>
-					<a th:href="@{'mycart/addProduct/{id}'(id=${product.id})}">
-                		<button type="button" class="btn btn-primary" th:text="Buy">Buy</button>
-            		</a>
-				</div>
-			</div>
-			<div class='col-sm-4'>
-				<div class='thumbnail'>
-					<img class='product' src='#' alt='product2'/>
-					<div class='caption'>
-						<h3><a th:text='${product.name}'>Product</a></h3>
-						<p>[[${product.price}]]</p>
-					</div>
-				</div>
-			</div>
-			<div class='col-sm-4'>
-				<div class='thumbnail'>
-					<img class='product' src='#' alt='product3'/>
-					<div class='caption'>
-						<h3><a th:text='${product.name}'>Product</a></h3>
-						<p>[[${product.price}]]</p>
-					</div>
-				</div>
-			</div>
-			<div class='col-sm-4'>
-				<div class='thumbnail'>
-					<img class='product' src='#' alt='product4'/>
-					<div class='caption'>
-						<h3><a th:text='${product.name}'>Product</a></h3>
-						<p>[[${product.price}]]</p>
-					</div>
-				</div>
-			</div>
-			<div class='col-sm-4'>
-				<div class='thumbnail'>
-					<img class='product' src='#' alt='product5'/>
-					<div class='caption'>
-						<h3><a th:text='${product.name}'>Product</a></h3>
-						<p>[[${product.price}]]</p>
-					</div>
-				</div>
-			</div>
-			<div class='col-sm-4'>
-				<div class='thumbnail'>
-					<img class='product' src='#' alt='product6'/>
-					<div class='caption'>
-						<h3><a th:text='${product.name}'>Product</a></h3>
-						<p>[[${product.price}]]</p>
-					</div>
-				</div>
-			</div>
-		</div>
+	<table class='table table-striped'>
+		<tr>
+			<th>Cosmetics Products</th>
+			<th sec:authorize="hasAuthority('USER')" th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</th>
+			<th>
+				<form th:action="@{/logout}" method="post">
+					<input type="submit" value="Sign Out" class="btn btn-danger"/>
+				</form>
+			</th>
+		</tr>	
+	</table>
+	
+	<div class='container' th:fragment='content'>
+		<div class='row'>
+			<div class='col-sm-4 product' th:each="product : ${products}">
+				<img th:src="@{'/images/' + ${product.image}}"/>
+				<h4 th:text='${product.name}'></h4>
+				<p th:text='${product.price}'></p>
+				<form sec:authorize="hasAuthority('USER')" th:action="@{/addtocart/{id}(id=${product.id})}" method="POST">
+               		<input type="submit" class="btn btn-primary" value="Add to cart"/>               		
+           		</form>
+           		<p><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/edit/{id}(id=${product.id})}">Edit product</a></p>
+           		<p><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/delete/{id}(id=${product.id})}">Delete product</a></p>
+			</div>			
+		</div>		
 	</div>
 </body>
 </html>

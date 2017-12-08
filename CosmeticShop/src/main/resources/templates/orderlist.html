@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:replace='layout :: head'>
 </head>
 <body>
@@ -9,17 +9,11 @@
 		<table class='table table-striped' border='1'>
 			<tr>
 				<th>Order number</th>
-				<th>Customer name</th>
-				<th>Customer address</th>
-				<th>Customer email</th>
-				<th>Total amount</th>
+				<th>Total price</th>
 			</tr>
 			<tr th:each='order : ${orders}'>
-				<th th:text='${order.customerName}'></th>
-				<th th:text='${order.customerAddress}'></th>
-				<th th:text='${order.customerEmail}'></th>
-				<th th:text='${order.orderAmount}'></th>
-				<td><a class='btn btn-primary' th:href="@{/check/{id}(id=${check.id})}">Check</a></td>  
+				<th th:text='${order.getId()}'></th>
+				<th th:text='${order.getTotalPrice()}'></th>
 			</tr>
 		</table>
 	</div>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace='layout :: head'>
+</head>
+<body>
+	<nav th:replace='layout :: header'></nav>
+	<h4>Thank you for your order!</h4>
+	<h3>Order Summary</h3>
+	<table class='table table-striped'>
+		<tr>
+			<th>Product Name</th>
+			<th>Price</th>
+		</tr>
+		<tr th:each="product : ${cproducts}">
+			<td th:text='${product.name}'></td>
+			<td th:text='${product.price}'></td>
+		</tr>	
+		<tr>
+			<th>Total price</th>
+	
+			<th th:text='${totalprice}'></th>
+		</tr>
+	</table>
+		
+		<form th:action='@{/saveorder}'>
+			<input type='submit' value='OK'/>
+		</form>
+</body>
+</html>

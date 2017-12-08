@@ -1,0 +1,15 @@
+div.product
+{
+	border: 1px solid black;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	text-align: center;
+}
+
+img
+{
+	width: 200px;
+	height: 180px;
+	display: block;
+	margin: 2px auto;
+}

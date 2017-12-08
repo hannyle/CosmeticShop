@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace='layout :: head'>
+</head>
+<body>
+	<nav th:replace='layout :: header'></nav>
+	<table class='table table-striped'>
+		<tr>
+			<th>Cosmetics Products</th>
+			<th></th>
+			<th>
+				<a th:href='@{/login}'><button>Login</button></a>
+			</th>
+		</tr>	
+	</table>
+	<div th:replace='home :: content'></div>
+</body>
+</html>

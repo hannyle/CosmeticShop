@@ -1,23 +1,34 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:replace='layout :: head'>
 </head>
 <body>
 	<nav th:replace='layout :: header'></nav>
 	<h1>My Cart</h1>
-	<div>
-		<table class='table table-striped' border='1'>
-			<tr>
-				<th>Product name</th>
-				<th>Price</th>
-			</tr>
-			<tr th:each='product : ${products}'>
-				<td th:text='${product.name}'></td>
-				<td th:text='${product.price}'></td>
-				<td><a class='btn btn-danger' th:href="@{/delete/{id}(id=${product.id})}">Delete</a></td>  
-			</tr>
-		</table>
-		<p>Total price: </p>
+	<div class='container'>
+		<div class='row'>
+			<div class='col-sm-4 product' th:each="product : ${cproducts}">
+				<!-- <input type='hidden' th:field="*{id}" class='form-control'/>	 -->
+				<img th:src="@{'/images/' + ${product.image}}"/> 
+				<h4 th:text='${product.name}'></h4>
+				<p th:text='${product.price}'></p>
+				<a th:href="@{/deletefromcart/{id}(id=${product.id})}"><button class='btn btn-danger'>Delete product</button></a>				  
+			</div>			
+		</div>	
+		<a th:href="@{/home}"><button class="btn"> Add more products</button></a>
+		<a th:href="@{/orderconfirm}"><button type="submit" class="btn btn-primary">Order</button></a>  
+       	         		
+ 
 	</div>
+	<!--  <div class='container'>
+		<form th:object="${products}" th:action="@{/savecart}" action="#" method="POST">
+			<h4 th:field='*{name}'></h4>
+			<p th:field='*{price}'></p>
+		</form>
+		<a th:href="@{/home}"> Add more products</a>
+       	<a th:object="${products}">
+               		<button type="submit" class="btn btn-primary">Buy</button>               		
+       </a>
+	</div>-->
 </body>
 </html>

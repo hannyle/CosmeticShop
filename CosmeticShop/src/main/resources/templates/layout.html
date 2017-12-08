@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:fragment='head'>
-	<meta charset = 'UTF-8'/>
+	<meta http-equiv="Content-Type" content="text/html" charset = 'UTF-8'/>
 	<title>Cosmetics Shopping</title>
-	<link rel='stylesheet' type='text/css' href='./css/bootstrap.min.css' th:href='@{./css/bootstrap.min.css}'/>
+	<link rel='stylesheet' type='text/css' href='./css/bootstrap.min.css' th:href='@{/css/bootstrap.min.css}'/>
+	<link rel='stylesheet' type='text/css' href='./css/style.css' th:href='@{/css/style.css}'/>
 </head>
 <body>
 	<nav th:fragment='header' class="navbar navbar-inverse">
   		<div class="container-fluid">
 		    <div class="navbar-header">
-		      <a class="navbar-brand" th:action="@{/home}">Cosmetic Shop</a>
+		      <a class="navbar-brand" th:href="@{/home}">Cosmetic Shop</a>
 		    </div>		    
 		    <ul class="nav navbar-nav navbar-right">
-      			<li><a th:href='@{/login}'>Login</a></li>
+      		    <li><a sec:authorize="hasAuthority('USER')" th:href='@{/mycart}'>My Cart</a></li>
+      			<li><a sec:authorize="hasAuthority('ADMIN')" th:href='@{/orderlist}'>Order List</a></li>
+      			<li><a sec:authorize="hasAuthority('ADMIN')" th:href='@{/createproduct}'>Create Product</a></li>
     		</ul>
     	</div>
 	</nav>

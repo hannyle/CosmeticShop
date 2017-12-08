@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace='layout :: head'>
+</head>
+<body>
+	<nav th:replace='layout :: header'></nav>
+	<h3>Edit Product</h3>
+	<div>
+		<form th:object="${products}" th:action="@{/save}" action="#" method="POST">
+			<input type='hidden' th:field="*{id}" class='form-control'/>
+			<label for="image">Image</label>
+			<input type='file' th:field="*{image}"/>
+			<br/>
+			<label for="productName">Product Name</label>
+			<input type='text' th:field="*{name}"/>
+			<br/>
+			<label for='productPrice'>Price</label>
+			<input type='text' th:field="*{price}"/>
+			<br/>
+			<input class='btn btn-success' type='submit' value='save'/>		
+		</form>
+	</div>
+</body>
+</html>

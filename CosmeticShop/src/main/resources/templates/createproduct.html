@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace='layout :: head'>
+</head>
+<body>
+	<nav th:replace='layout :: header'></nav>
+	<h3>Create new product</h3>
+	<div>
+		<form th:object="${products}" th:action="@{/save}" action="#" method="POST">
+			<label for="image">Image</label>
+			<input type='file' th:field="*{image}"/>
+			<br/>
+			<label for="productName">Product Name</label>
+			<input type='text' th:field="*{name}"/>
+			<br/>
+			<label for='productPrice'>Price</label>
+			<input type='text' th:field="*{price}"/>
+			<br/>
+			<input type='submit' value='save'/>		
+		</form>
+	</div>
+</body>
+</html>
