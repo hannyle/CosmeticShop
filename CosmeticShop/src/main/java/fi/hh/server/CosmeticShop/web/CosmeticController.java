@@ -34,7 +34,7 @@ public class CosmeticController {
 	private long order_id = 1;
 	private Order[] orderlist =  new Order[0];
 	
-	@RequestMapping(value="/mainpage")
+	@RequestMapping(value="/")
     public String mainpage (Model model) {	
 		model.addAttribute("products", repository.findAll());		
         return "mainpage";
